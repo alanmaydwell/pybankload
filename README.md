@@ -21,7 +21,7 @@ print("Finished! Saved:", myfile.filename)
 **yearday** - date of payment in format with first two digits representing the year and next three digits the day within the year,
 e.g. 17001 for first day of 2017 and 17365 for last day of 2017.       
 
-(2) Run bankfile.py to generate the file.
+(2) Run bankfile.py to generate the file. Filename created automatically in `bankfile<dmy>.n` format. Some examples included in this repo.
 
 ### Finding Payment Book Numbers
 **payment_book_info.sql** can be run in CIS database to get payment book numbers. The dso.migrated_flag can be used to identify cases migrated to CIS ("Y" indicates case migrated).

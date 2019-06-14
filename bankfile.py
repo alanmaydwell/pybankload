@@ -86,14 +86,20 @@ class BankFile:
         """Convert file data (self.lines) to a string and return it"""
         text = ""
         for line in self.lines:
-            # using "\r\n" line end as that's what existing files have
-            text = text + line + "\r\n"
+            # using "\n" line end as that's what existing files have
+            #(Note from windows need to write using "wb" mode from to keep this)
+            text = text + line + "\n"
         return text
     
     def write(self):
         """Write current content to file using filename already set"""
         text = self.make_string()
-        with open(self.filename, "w") as outfile:
+        # Need "wb" mode to get line-ends to stay just \n on Windows
+        if os.name == "nt":
+            mode = "wb"
+        else:
+            mode = "w"
+        with open(self.filename, mode) as outfile:
             outfile.write(text)
 
 # Note CIS account details are in collection_accounts table

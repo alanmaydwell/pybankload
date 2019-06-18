@@ -26,3 +26,5 @@ Note the files are created with \n line-ends (which is authentic) but Github upl
 
 ### Finding Payment Book Numbers
 **payment_book_info.sql** can be run in CIS database to get payment book numbers. The dso.migrated_flag can be used to identify cases migrated to CIS ("Y" indicates case migrated).
+### Jupyter Notebook ###
+**CISBankLoad.ipynb** can be used to capture data related to a bankfile load. Includes SQL queries that extract info from the database and also checks contents of the related directories using ssh.

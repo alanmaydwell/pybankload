@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import time
 
@@ -94,20 +96,20 @@ class BankFile:
     def write(self):
         """Write current content to file using filename already set"""
         text = self.make_string()
-        # Need "wb" mode to get line-ends to stay just \n on Windows
+        # Need to write in different way to ensure \n line ends on Windows
         if os.name == "nt":
-            mode = "wb"
+            with open(self.filename, "wb") as outfile:
+                outfile.write(bytes(text, "UTF-8"))
         else:
-            mode = "w"
-        with open(self.filename, mode) as outfile:
-            outfile.write(text)
+            with open(self.filename, "w") as outfile:
+                outfile.write(text)
 
 # Note CIS account details are in collection_accounts table
 
 # Create bankfile with two payments
 myfile = BankFile()
-myfile.add_receipt(book_no="212156419026", amount="12345", name="CCMS", yearday="19100")
-myfile.add_receipt(book_no="212156419056", amount="23456", name="CIS", yearday="19101")
+myfile.add_receipt(book_no="212156419026", amount="12345", name="CCMS", yearday="21100")
+myfile.add_receipt(book_no="212156419056", amount="23456", name="CIS", yearday="21101")
 myfile.add_end()
 myfile.write()
 print("Finished! Saved:", myfile.filename)
